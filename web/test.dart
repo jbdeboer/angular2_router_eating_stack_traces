@@ -5,7 +5,6 @@ import 'package:angular2/angular2.dart';
 import 'package:angular2/di.dart';
 import 'package:angular2/src/render/dom/shadow_dom/shadow_dom_strategy.dart';
 import 'package:angular2/src/render/dom/shadow_dom/native_shadow_dom_strategy.dart';
-import 'package:angular2/src/core/zone/vm_turn_zone.dart';
 import 'package:angular2/src/reflection/reflection.dart';
 import 'package:angular2/src/reflection/reflection_capabilities.dart';
 
@@ -20,11 +19,7 @@ amain() {
   // For now, use dynamic reflection (mirrors).
   // https://github.com/angular/angular/issues/1063
   reflector.reflectionCapabilities = new ReflectionCapabilities();
-  final docFragment = document.createDocumentFragment()..children.add(
-    new Element.tag('my-comp')
-  );
   final testBindings = [
-    bind(appDocumentToken).toValue(docFragment),
     bind(ShadowDomStrategy).toClass(NativeShadowDomStrategy)
   ];
 
